@@ -159,6 +159,10 @@ def dashboardS(request):
 def dashboardT(request):
     return render(request, 'ciscoapp/dashboardT.html') 
 
+
+def QuestionOfTheWeekS(request):
+    return render(request, 'ciscoapp/QuestionOfTheWeekS.html')
+
 def homepage(request):
     return render(request, 'ciscoapp/index.html')
 	
@@ -207,3 +211,9 @@ def enterBank(request):
     return render(request, 'ciscoapp/view_students.html', {'st_lst': st_lst})"""
 
 
+def student_q_manage(request):
+    return render(request, 'ciscoapp/test_modal.html',)
+
+
+def GenReport(request):
+    return render(request, 'ciscoapp/GenReport.html',)

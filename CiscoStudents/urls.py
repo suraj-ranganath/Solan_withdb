@@ -54,4 +54,6 @@ urlpatterns = [
    # path('', TemplateView.as_view(template_name='index.html'), name='homepage'),
     #path('QuestionOfTheWeekS.html', views.QuestionOfTheWeekS, name='QuestionOfTheWeekS.html')
     #path('view_school', views.get_school, name='get_school'),
+    path('QuestionOfTheWeekS.html',views.QuestionOfTheWeekS, name='QuestionOfTheWeekS'),
+	path('GenReport.html', views.GenReport, name='GenReport'),
 ]

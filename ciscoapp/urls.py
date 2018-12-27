@@ -50,6 +50,6 @@ urlpatterns = [
     path('enter_questions', views.enterBank, name='enter_questions'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('', TemplateView.as_view(template_name='index.html'), name='homepage'),
-    #path('QuestionOfTheWeekS.html', views.QuestionOfTheWeekS, name='QuestionOfTheWeekS.html')
+    path('QuestionOfTheWeekS.html', views.QuestionOfTheWeekS, name='QuestionOfTheWeekS')
     #path('view_school', views.get_school, name='get_school'),
 ]
