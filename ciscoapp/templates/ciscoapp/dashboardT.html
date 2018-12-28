@@ -216,32 +216,30 @@
                                   <br>
                                   <br>
                                   <div class="container">
-                                    <h4>Enter class and Section</h4>
-                                      <form class = "input-field">
-                                          <div class = "row">
-                                                <select>
-                                                   <option value = "" disabled selected>Select Class</option>
-                                                   <option style="text-emphasis-color: #0288d1" value = "1">All classes</option>
-                                                   <option value = "2">Class 9</option>
-                                                   <option value = "3">Class 10</option>
-                                                </select>               
-                                          </div>
-                                      </form>
-                                      <form class = "input-field">
-                                              <div class = "row">
-                                                    <select>
-                                                       <option value = "" disabled selected>Select section</option>
-                                                       <option value = "1">All sections</option>
-                                                       <option value = "2">A</option>
-                                                       <option value = "3">B</option>
-                                                    </select>               
-                                              </div>
-                                          </form>
-                                        </div>
-                                        <div class="modal-footer" style="background-color: white">
-                                          <a href="B1.html"><button class="btn waves-effect waves-light blue darken-2" >Manage student questions</button></a>
-                                        </div>
+                                    <h4>Enter Subject and Chapter</h4>
+                                  <form action = "{% url 'student_q_manage' %}" method="post" class = "input-field">
+                                      {% csrf_token %}
+                                      <div class = "row">
+                                            <select name='myselect1' >
+                                               <option value = "" disabled selected>Select Subject</option>
+                                               <option style="text-emphasis-color: #1976D2" value = "Physics">Physics</option>
+                                               <option value = "Chemistry">Chemistry</option>
+                                               <option value = "Biology">Biology</option>
+                                            </select>
                                       </div>
+
+                                          <div class = "row">
+                                                <select name = 'myselect2'>
+                                                   <option value = "" disabled selected>Select chapter</option>
+                                                   <option value = "Kinetic Theory">Kinetic Theory</option>
+                                                   <option value = "Thermodynamics">Thermodynamics</option>
+                                                   <option value = "Kinetics">Kinetics</option>
+                                                </select>
+                                          </div>
+                                          <div class="modal-footer" style="background-color: white">
+                                            <button type ='submit' class="btn waves-effect waves-light blue darken-2" >Manage Student Questions</button>
+                                          </div>
+                                  </form>
                               </div>
                         
                       </div>

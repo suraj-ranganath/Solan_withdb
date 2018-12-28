@@ -212,7 +212,15 @@ def enterBank(request):
 
 
 def student_q_manage(request):
-    return render(request, 'ciscoapp/test_modal.html',)
+    
+    subject = request.POST.get('myselect1')
+    chapter = request.POST.get('myselect2')
+    print('subject is : ', str(subject))
+    print('chapter is : ', str(chapter))
+    query = "select * from question where subject = " + "'" + \
+        str(subject) + "'" + " and chapter = " + "'" + str(chapter) + "'"
+    questions = question.objects.raw(query)
+    return render(request, 'ciscoapp/B1.html', {'questionList': questions})
 
 
 def GenReport(request):
