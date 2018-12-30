@@ -42,6 +42,12 @@ urlpatterns = [
 	path('retrieve', views.retrieve, name='retrieve'),
 	path('viewBank', views.viewBank, name='viewBank'),
     path('enterBank', views.enterBank, name='enterBank'),
+
+
+    path('editquestion', views.editquestion, name='editquestion'),
+   	path('updatequestion', views.updatequestion, name='updatequestion'),
+
+	   
 	path('dashboardS.html', views.dashboardS, name='dashboardS'),
 	path('dashboardT.html', views.dashboardT, name='dashboardT'),
 	path('index.html', views.homepage, name='homepage'),

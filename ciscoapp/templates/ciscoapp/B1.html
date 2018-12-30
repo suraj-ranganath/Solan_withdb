@@ -89,7 +89,7 @@
   <nav>
     <div class="nav-wrapper light blue darken-2">
       <a href="index.html" class="brand-logo" style="padding-left:5.25%" >Solan |</a>
-      <a href="dashboardT.html" class="brand-logo" style="padding-left:13%" > Dashboard</a>
+      <a href="dashboardT.html" class="brand-logo" style="padding-left:13%" >   Dashboard</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="slide-out" class="sidenav">
         <li><div class="user-view">
@@ -101,7 +101,8 @@
           <a style="cursor: default;" href="#name"><span class="white-text bold name">
             {{ user.username }}
           </span></a>
-          <a style="cursor: default;" href="#email"><span class="white-text bold email">{{ user.email }}</span></a>
+          <a style="cursor: default;" href="#email"><span class="white-text bold email">{{ user.email }}
+          </span></a>
                               
                               
         </div></li>
@@ -150,14 +151,19 @@
           {% for qn in questionList %}
             
             
-
+            
             <button class="collapsible">{{ qn.question }}</button>
-       <div class="panel">
-          <li class="collection-item">{{ qn.question }}</li>
-       
+              <div class="panel">
+                <form action = "{% url 'editquestion' %}" method="post" >
+              {% csrf_token %}
+                <li class="collection-item" name="question123" value="{{ qn.question }}" >{{ qn.question }}</li>
+                <div class="input-field col s12">
+                  <textarea name = "question123" class="materialize-textarea" >{{ qn.question }}</textarea>
+                    
+                  </div>
       
-       <a class="btn waves-effect waves-light blue darken-2"  href="Edit Question.html">Edit</a>
-       <a class="btn waves-effect waves-light blue darken-2 modal-trigger" data-target="del">Delete</a>
+       <button type ='submit' class="btn waves-effect waves-light blue darken-2" >Edit</button>
+       <button type ='submit' class="btn waves-effect waves-light blue darken-2" >Delete</button>
        <div id="del" class="modal">
         <br>
         <br>
@@ -179,7 +185,7 @@
                 <a href="B1.html"><button class="btn waves-effect waves-light blue darken-2" >No</button></a>
               </div>
             </div>
-            
+            </form>
                      </div>
             
                      

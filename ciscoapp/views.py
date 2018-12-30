@@ -225,3 +225,32 @@ def student_q_manage(request):
 
 def GenReport(request):
     return render(request, 'ciscoapp/GenReport.html',)
+
+
+def editquestion(request):
+    question2 = request.POST['question123']
+    print('question is : ', str(question2))
+    
+    return render(request, 'ciscoapp/Edit Question.html')
+    request.session['question2'] = question2
+    print(str(request.session['question2']))
+
+
+def updatequestion(request):
+    question4 = request.session['question2']
+    print('question4 is : ', str(question4))
+    question3 = request.POST['questionnew']
+    print('question3 is : ', str(question3))
+    query = "update question set  question = " + "'" + \
+        str(question3) + "'" + " where question = " + "'" + str(question4) + "'"
+    questions = question.objects.raw(query)
+    
+
+'''
+    args = (question3)
+    cursor = connection.cursor()
+    cursor.execute("update question set question = (%s) where question = () ", args)
+    st_lst = question.objects.raw('select * from question')
+    return render(request, 'ciscoapp/enter_questions.html', {'st_lst': st_lst})'''
+
+
