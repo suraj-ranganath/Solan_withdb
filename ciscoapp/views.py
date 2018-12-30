@@ -217,6 +217,8 @@ def student_q_manage(request):
     chapter = request.POST.get('myselect2')
     print('subject is : ', str(subject))
     print('chapter is : ', str(chapter))
+    request.session['subject23'] = subject
+    request.session['chapter23'] = chapter
     query = "select * from question where subject = " + "'" + \
         str(subject) + "'" + " and chapter = " + "'" + str(chapter) + "'"
     questions = question.objects.raw(query)
@@ -231,12 +233,14 @@ def editquestion(request):
     question2 = request.POST['question123']
     print('question2 is : ', str(question2))
     question5 = request.POST['question456']
+    subject23 = request.session['subject23']
+    chapter23 = request.session['chapter23']
     #return render(request, 'ciscoapp/Edit Question.html')
     #request.session['question2'] = question2
     print('question5 is : ', str(question5))
     query = "update question set  question = " + "'" + \
         str(question5) + "'" + " where question = " + \
-        "'" + str(question2) + "'"
+        "'" + str(question2) + "'" + "and subject = " + "'" + str(subject23) + "'" + " and chapter = " + "'" + str(chapter23) + "'"
     print(query)
     questions = question.objects.raw(query)
     args = (question2,question5)
