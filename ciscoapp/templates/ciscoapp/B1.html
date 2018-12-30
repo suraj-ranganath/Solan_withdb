@@ -142,78 +142,21 @@
 					  
   <div class="container">
     <h2>Student questions</h2>  
-	  <button class="collapsible">Question 1</button>
-       <div class="panel">
-          <p>QUESTION </p>
-		  <form>
-          <input type="checkbox" name="option" value="option 1" > Option 1<br>
-          <input type="checkbox" name="option" value="option 2"> Option 2<br>
-          <input type="checkbox" name="option" value="optoin 3"> Option 3<br>
-		  <input type="checkbox" name="option" value="option 4"> Option 4<br>
-           </form> 
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="document.getElementById('id01').style.display='block'">Edit</a>
-       <a class="btn waves-effect waves-light blue darken-2 modal-trigger" data-target="del">Delete</a>
-       <div id="del" class="modal">
-        <br>
-        <br>
-        <div class="container" style="background-color: white" >Are you sure you want to delete this question?</div>
-        
-              <div class="modal-footer" style="background-color: white">
-                <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully deleted question')">Yes</a>
-                <a href="B1.html"><button class="btn waves-effect waves-light blue darken-2" >No</button></a>
-              </div>
-            </div>
-		   <a class="btn waves-effect waves-light blue darken-2 modal-trigger" data-target="sel">Select For Question Of The Week</a>
-       <div id="sel" class="modal">
-        <br>
-        <br>
-        <div class="container" style="background-color: white" >Are you sure you want to select this question as the Question of The Week?</div>
-        
-              <div class="modal-footer" style="background-color: white">
-                <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully selected question as Question Of The Week')">Yes</a>
-                <a href="B1.html"><button class="btn waves-effect waves-light blue darken-2" >No</button></a>
-              </div>
-            </div>
-            <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-card-4">
-            <header class="w3-container"> 
-        <span onclick="document.getElementById('id01').style.display='none'"class="w3-button w3-medium w3-display-topright">&times;</span>
-        <h5>QUESTION</h5>
-      </header>
-      <div class="w3-container">
-	   <form>
-              
-              <input type="text" name="Question" value="How does the anomalous expansion of water affect marine life?" size="100" rows="10">
-              <br>
-              <br>
-              <br>
-              <input type="text" name="Option" value="Option1" size="50" rows="10">
-              <br>
-              <input type="text" name="Option" value="Option2" size="100" rows="10">
-              <br>
-              <input type="text" name="Option" value="Option3" size="100" rows="10">
-              <br>
-              <input type="text" name="Option4" value="Option4" size="100" rows="10">
-              <br>
-              <br>
-             
-              <button class="btn waves-effect waves-light blue darken-2" type="submit" name="action" onclick="alert('Saved Successfully')">Save</button>
-            </form> 
-        
-      </div>
-               </div>
-              </div>
-                     </div>
-    <button class="collapsible">Question 1</button> 
-      <div class="panel">                
+	  
+     
+                      
 		 {% if questionList %}
         <ul class = "collection">
           {% for qn in questionList %}
             
+            
 
-            <li class="collection-item">{{ qn.question }}</li>
-
-            <a class="btn waves-effect waves-light blue darken-2"  href="Edit Question.html">Edit</a>
+            <button class="collapsible">{{ qn.question }}</button>
+       <div class="panel">
+          <li class="collection-item">{{ qn.question }}</li>
+       
+      
+       <a class="btn waves-effect waves-light blue darken-2"  href="Edit Question.html">Edit</a>
        <a class="btn waves-effect waves-light blue darken-2 modal-trigger" data-target="del">Delete</a>
        <div id="del" class="modal">
         <br>
@@ -238,7 +181,8 @@
             </div>
             
                      </div>
-
+            
+                     
           {% endfor %}
         </ul>
     {% else %}
@@ -254,79 +198,13 @@
           
 		   
 		   
-		 <button class="collapsible">Question 3</button>
-       <div class="panel">
-          
-		  
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="document.getElementById('id03').style.display='block'">Edit</a>
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully Deleted')">Delete</a>
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully selected for question of the week')">Select For Question Of The Week</a>
-           
-            <div id="id03" class="w3-modal">
-            <div class="w3-modal-content w3-card-4">
-            <header class="w3-container"> 
-        <span onclick="document.getElementById('id03').style.display='none'" 
-        class="w3-button w3-medium w3-display-topright">&times;</span>
-        <h5>QUESTION</h5>
-      </header>
-      <div class="w3-container">
-	   <form>
-              
-              <input type="text" name="Question" value="DISPLAYS CURRENT QUESTION AND OPTIONS" size="100" rows="10">
-              <br>
-             
-              <button class="btn waves-effect waves-light" type="submit" name="action" onclick="alert('Saved Successfully')">Save</button>
-            </form> 
-        
-      </div>
-      <footer class="w3-container">
-        <p></p>
-           </footer>
-               </div>
-             </div>
-          </div>
+ 
 		 
-
-		 <button class="collapsible">Question 6</button>
-       <div class="panel">
-          <p>QUESTION </p>
-		  <form>
-          <input type="checkbox" name="option" value="option 1" > Option 1<br>
-          <input type="checkbox" name="option" value="option 2"> Option 2<br>
-          <input type="checkbox" name="option" value="optoin 3"> Option 3<br>
-		  <input type="checkbox" name="option" value="optoin 4"> Option 4<br>
-           </form> 
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="document.getElementById('id06').style.display='block'">Edit</a>
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully Deleted')">Delete</a>
-		   <a class="btn waves-effect waves-light blue darken-2"  onclick="alert('Successfully selected for question of the week')">Select For Question Of The Week</a>
-           
-            <div id="id06" class="w3-modal">
-            <div class="w3-modal-content">
-            <header class="w3-container"> 
-        <span onclick="document.getElementById('id06').style.display='none'" class="w3-button w3-medium w3-display-topright">&times;</span>
-        <h5>QUESTION</h5>
-      </header>
-      <div class="w3-container">
-	   <form>
-              
-              <input type="text" name="Question" value="DISPLAYS CURRENT QUESTION AND OPTIONS" size="100" rows="10">
-              <br>
-             
-              <button class="btn waves-effect waves-light" type="submit" name="action" onclick="alert('Saved Successfully')">Save</button>
-            </form> 
-        
-      </div>
-      <footer class="w3-container">
-        <p></p>
-           </footer>
-               </div>
-             </div>
-          </div>
 		 
 		 
 		 
 		  
-       </div>
+       
        <footer class="page-footer light blue darken-2">
         <p style="padding-left:22%;">© Copyright 2018 Solan - All Rights Reserved</p>
         <br>
