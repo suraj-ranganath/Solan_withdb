@@ -262,7 +262,7 @@ def deletequestion(request):
     print(query)
     cursor = connection.cursor()
     cursor.execute(query)
-    return render(request, 'ciscoapp/enter_questions.html')
+    return render(request, 'ciscoapp/Deletequestion.html')
 
 
 '''def updatequestion(request):
