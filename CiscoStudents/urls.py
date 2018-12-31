@@ -45,7 +45,7 @@ urlpatterns = [
 
 
     path('editquestion', views.editquestion, name='editquestion'),
-   	#path('updatequestion', views.updatequestion, name='updatequestion'),
+   	path('deletequestion', views.deletequestion, name='deletequestion'),
 
 
 	path('dashboardS.html', views.dashboardS, name='dashboardS'),

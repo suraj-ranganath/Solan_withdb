@@ -231,6 +231,7 @@ def GenReport(request):
 
 def editquestion(request):
     question2 = request.POST['question123']
+    #request.session['question33'] = question2
     print('question2 is : ', str(question2))
     question5 = request.POST['question456']
     subject23 = request.session['subject23']
@@ -246,6 +247,20 @@ def editquestion(request):
     args = (question2,question5)
     cursor = connection.cursor()
     #cursor.execute("update question set question = (%s) where question = (%s) ", args)
+    cursor.execute(query)
+    return render(request, 'ciscoapp/enter_questions.html')
+
+
+def deletequestion(request):
+    question9 = request.POST['question333']
+    print(question9)
+    subject33 = request.session['subject23']
+    chapter33 = request.session['chapter23']
+    query = "delete from  question where question = " + \
+        "'" + str(question9) + "'" + "and subject = " + "'" + str(subject33) + \
+        "'" + " and chapter = " + "'" + str(chapter33) + "'"
+    print(query)
+    cursor = connection.cursor()
     cursor.execute(query)
     return render(request, 'ciscoapp/enter_questions.html')
 
