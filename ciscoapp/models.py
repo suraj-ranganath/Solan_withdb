@@ -44,7 +44,7 @@ class question(models.Model):
     subject=models.CharField(primary_key=True,max_length=80,db_column='subject', null=False)
     chapter=models.CharField(max_length=80,db_column='chapter', null=False)
     question=models.CharField(max_length=1000, db_column = 'question', null = False)
-
+    qotw = models.CharField(max_length=1, db_column='qotw', default='n')
     class Meta:
         db_table = 'question'
         verbose_name_plural = 'questions'
