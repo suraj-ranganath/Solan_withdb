@@ -14,6 +14,7 @@ from .models import Student
 from .models import login
 from .models import question
 from .models import subject
+from .models import points
 
 register = template.Library()
 @register.filter(name='has_group')
@@ -154,14 +155,16 @@ def retrieve(request):
 	return render(request, 'ciscoapp/QuestionBank.html', {'q_lst': q_lst})
 	
 def dashboardS(request):
-	return render(request, 'ciscoapp/dashboardS.html')
+    query_result1 = points.objects.filter(
+        login__user__email=str(request.user.email))
+    pointsObject = query_result1[0]
+    return render(request, 'ciscoapp/dashboardS.html', {'pointsObject': pointsObject})
 
 def dashboardT(request):
     return render(request, 'ciscoapp/dashboardT.html') 
 
 
-def QuestionOfTheWeekS(request):
-    return render(request, 'ciscoapp/QuestionOfTheWeekS.html')
+
 
 def homepage(request):
     return render(request, 'ciscoapp/index.html')
@@ -195,12 +198,16 @@ def enterBank(request):
     # question=request.POST.get('subjective')
     #query = "INSERT INTO question(subject,chapter,question) " \
     #       "VALUES(%s,%s,%s)"
-    #query = text("insert into question VALUES ") + "(" + "'" + str(subject1) + "'" + "," + "'" + str(chapter1) + "'" + "," + "'" + str(question1) + "'" + ")"
+    query = "insert into question VALUES " + "(" + "'" + str(subject1) + "'" + "," + "'" + str(chapter1) + "'" + "," + "'" + str(question1) + "'" + "," + "'" + "n" + "'" + ")"
     #query = "insert into question VALUES " + "(" + "'" + str(subject1) + "'" + "," + "'" + str(chapter1) + "'" + ")"
     #query1 = "insert into question VALUES(%s) where subject = " + "'" + str(subject1) + "'" + " and chapter = " + "'" + str(chapter1) + "'"
-    #print(query1)
+    print(query)
     cursor = connection.cursor()
-    cursor.execute("insert into question VALUES(%s, %s, %s)", args)
+    cursor.execute(query)
+    query_result1 = points.objects.filter(login__user__email=str(request.user.email))
+    pointsObject = query_result1[0]
+    pointsObject.points += 1
+    pointsObject.save()
     st_lst = question.objects.raw('select * from question')
     return render(request, 'ciscoapp/enter_questions.html', {'st_lst': st_lst})
     #questions = question.objects.raw(query)
@@ -219,6 +226,8 @@ def student_q_manage(request):
     print('chapter is : ', str(chapter))
     request.session['subject23'] = subject
     request.session['chapter23'] = chapter
+    request.session['subject53'] = subject
+    request.session['chapter53'] = chapter
     query = "select * from question where subject = " + "'" + \
         str(subject) + "'" + " and chapter = " + "'" + str(chapter) + "'"
     questions = question.objects.raw(query)
@@ -226,7 +235,13 @@ def student_q_manage(request):
 
 
 def GenReport(request):
-    return render(request, 'ciscoapp/GenReport.html',)
+    # grade = request.POST.get('myselect3')
+   # section = request.POST.get('myselect4')
+    # query = "select * from points where grade = " + "'" + grade +"'"+"and section = " + "'" + str(section) + "'"
+    #points = points.objects.raw(query)
+    query = "select * from point"
+    query_results = points.objects.raw(query)
+    return render(request, 'ciscoapp/GenReport.html', {'query_results': query_results})
 
 
 def editquestion(request):
@@ -263,6 +278,42 @@ def deletequestion(request):
     cursor = connection.cursor()
     cursor.execute(query)
     return render(request, 'ciscoapp/Deletequestion.html')
+
+
+def questionoftheweekstudent(request):
+	#query = "select * from question where qotw ='y'"
+    query = "select * from question where qotw = " + "'" + \
+        str('y') + "'"
+    print(query)
+    questions = question.objects.raw(query)
+    return render(request, 'ciscoapp/QuestionoftheweekS.html', {'questionList': questions})
+
+
+def questionoftheweekteacher(request):
+    question11 = request.POST['question111']
+    subject43 = request.session['subject23']
+    chapter43 = request.session['chapter23']
+    print(question11)
+    query = "update question set  qotw = " + "'" + \
+        str('y') + "'" + " where question = " + \
+        "'" + str(question11) + "'" + "and subject = " + "'" + str(subject43) + \
+        "'" + " and chapter = " + "'" + str(chapter43) + "'"
+    cursor = connection.cursor()
+    cursor.execute(query)
+    return render(request, 'ciscoapp/Deletequestion.html')
+
+
+
+def QuestionOfTheWeekS(request):
+    query = "select * from question where qotw = " + "'" + \
+        str('y') + "'"
+    print(query)
+    questions = question.objects.raw(query)
+    return render(request, 'ciscoapp/QuestionoftheweekS.html', {'questionList': questions})
+
+
+def questions(request):
+    return render(request, 'ciscoapp/QuestionoftheweekS.html')
 
 
 '''def updatequestion(request):

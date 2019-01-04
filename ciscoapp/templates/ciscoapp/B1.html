@@ -188,7 +188,14 @@
               </div>
             </div>
           </form>
-       <a class="btn waves-effect waves-light blue darken-2 modal-trigger" data-target="sel">Select For Question Of The Week</a>
+      <form action = "{% url 'questionoftheweekteacher' %}" method="post" >
+       {% csrf_token %}
+          <div class="input-field col s12">
+                  
+                  <textarea Hidden name = "question111" class="materialize-textarea" >{{ qn.question }}</textarea>
+                    
+                </div>
+       <button type ='submit'  class="btn waves-effect waves-light blue darken-2" >Select as Question Of the Week</button>
        <div id="sel" class="modal">
         <br>
         <br>
@@ -199,7 +206,7 @@
                 <a href="B1.html"><button class="btn waves-effect waves-light blue darken-2" >No</button></a>
               </div>
             </div>
-            
+            </form>
                      </div>
             
                      

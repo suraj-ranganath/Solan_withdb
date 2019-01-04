@@ -98,20 +98,19 @@
                   </tr>
                 </thead>
         
+                {% if query_results %}
                 <tbody>
-                  <tr>
-                    <td>Meryl streep</td>
-                    <td>50</td>
-                  </tr>
-                  <tr>
-                    <td>Michelle Obama</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Gal Gadot</td>
-                    <td>75</td>
-                  </tr>
+                  {% for item in query_results %}
+                    <tr>
+                      <td>{{ item.login.user.email }}</td>
+                      <td>{{ item.points }}</td>
+                    </tr>
+                  {% endfor %}
+                  
                 </tbody>
+                {% else %}
+                  <p>No students are available.</p>
+                {% endif %}
               </table>
               <br>
               <button class="btn-floating waves-effect waves-light blue darken-2" style="align-self:center"><i class="material-icons">get_app</i></button>

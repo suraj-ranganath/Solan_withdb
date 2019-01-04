@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.utils import timezone
 # Create your models here.
 
@@ -19,15 +19,15 @@ class Student(models.Model):
         return str(self.roll_nbr) + ' Name => ' + str(self.student_name)
 
 class login(models.Model):
-    email_id = models.CharField(max_length=50, db_column='email_id', null= False)
-    password = models.CharField(max_length=50, db_column='password', null= False)
-
+    #email_id = models.CharField(max_length=50, db_column='email_id', null= False)
+    #password = models.CharField(max_length=50, db_column='password', null= False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     class Meta:
         db_table = 'login'
         verbose_name_plural = 'logins'
 
     def __str__(self):
-        return str(self.email_id) + ' Name => ' +  str(self.password)
+        return str(self.id)
 
 class subject(models.Model):
     sub=models.CharField(max_length=50, db_column='sub', null=False)
@@ -38,7 +38,7 @@ class subject(models.Model):
         verbose_name_plural = 'subjects'
 
     def __str__(self):
-        return str(self.email_id) + ' Name => ' +  str(self.password)
+        return str(self.id)
 
 class question(models.Model):
     subject=models.CharField(primary_key=True,max_length=80,db_column='subject', null=False)
@@ -48,5 +48,19 @@ class question(models.Model):
     class Meta:
         db_table = 'question'
         verbose_name_plural = 'questions'
+
+
+class points(models.Model):
+    points = models.IntegerField(default=0, db_column='points', null=False)
+    login = models.ForeignKey(login, on_delete=models.CASCADE)
+    #username=models.CharField(max_length=80,db_column='username', null=False) #display usernames
+    #grade=models.IntegerField(default=10,db_column='grade', null=False)
+    #section=models.CharField(max_length=1,default='A',db_column='grade', null=False)
+
+    class Meta:
+        db_table = 'point'
+        verbose_name_plural = 'points'
+
+
 
 

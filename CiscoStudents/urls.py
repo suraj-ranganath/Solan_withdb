@@ -61,6 +61,7 @@ urlpatterns = [
     #path('QuestionOfTheWeekS.html', views.QuestionOfTheWeekS, name='QuestionOfTheWeekS.html')
     #path('view_school', views.get_school, name='get_school'),
     path('QuestionOfTheWeekS.html',views.QuestionOfTheWeekS, name='QuestionOfTheWeekS'),
+	path('questionoftheweekteacher', views.questionoftheweekteacher, name='questionoftheweekteacher'),
 	path('GenReport.html', views.GenReport, name='GenReport'),
 	path('student_q_manage', views.student_q_manage, name='student_q_manage'),
 	
